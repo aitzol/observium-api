@@ -18,7 +18,6 @@ def lanorduan():
 
 @app.route('/', methods=['POST'])
 def notifikazioa():
-    import pdb;pdb.set_trace()
     data = json.loads(request.data)
     severity = data.get('ALERT_SEVERITY')
     if severity ==  Severity.Critical.name or lanorduan():
@@ -32,7 +31,7 @@ def notifikazioa():
             chat_id=os.environ.get("TELEGRAM_CHATID"),
             text=mezua
         )       
-    return "", 201
+    return "", 204
  
 app.run(host='0.0.0.0')
 
